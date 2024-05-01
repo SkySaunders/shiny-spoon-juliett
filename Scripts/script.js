@@ -41,47 +41,33 @@ $( document ).ready(function() {
 
 $("#submitButton").click(function () {
       //compare value. with a stored object...
-
       let userText = $('#userText').val().toUpperCase().split("");
 
       $.each(userText, (index, value)=> {
           console.log(index, value);
-          var letter = ''; //initialize aas empty
-          
-         // for (var i=0; i < userText.length; i++){
-          
-              letter = userText[index];
-
-              console.log('letter var = ', letter); //check what we got from array
+          //initialize as empty
+          var letter = '';   
               
-              console.log('are we grabbing correct thing from our data thingy?', phoneticAlfa[letter]); 
-              
-              result += phoneticAlfa[letter] + ' ';
-              console.log('result', result);
-
-          // if(phoneticAlfa[letter]){
-
-          //     console.log('are we grabbing correct thing from our data thingy?', phoneticAlfa.letter); 
-              
-          //   result += phoneticAlfa[letter] + ' ';
-          //     break
-          // }
-          // else{
-          //   result += letter + ' (Not in NATO alphabet) ';
-          // }
-       // }
+          letter = userText[index];
+//simple eval
+          if(phoneticAlfa[letter]){
+              console.log('work maybe?', phoneticAlfa.letter); 
+            result += phoneticAlfa[letter] + ' ';
+          }
+          else{
+            result += letter + " isn't there bud.";
+          }
         
-        }); //closes .each()   
-
+        }); 
+// Output the stuff
        $('#textOutput').text(result);
 
       });
       
-
-
+//Clear the boxes
 $('#clear').click(function () {
   $("#userText").val("")
-  $('#textOutput').val("")
+  $('#textOutput').text("")
 });
 
 });
